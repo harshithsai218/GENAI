@@ -172,3 +172,133 @@ print(t1)
 print(t2)
 print(t1/t2)
 ```
+---
+### 28-05-2025
+# 2D ARRAY'S
+#### How to create a 2D array
+```python
+a=np.array([[1,2,3,4],[5,6,7,8]])
+print(a)
+a.shape
+```
+### How can we access the elements from 2D array
+```python
+#how to access elements from the 2D Array
+#[row_index,column_index]
+print(a[0])
+#how to access the value from particular row and column
+print(a[1,1])
+print(a[0,2])
+```
+### How can i print first column value from below array
+```python
+a=np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+print(a)
+print(a[:,2])
+print(a[1,:])
+print()
+```
+---
+### TRANSPOSE
+- It converts rows into columns and viceversa.
+```python
+a=np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+print(a)
+print(a.T)
+```
+### Matrix Multiplication
+```python
+#Matrix Multiplication
+a=np.array([[1,2],[3,4]])
+b=np.array([[5,6],[7,8]])
+print(a.dot(b))
+```
+### Inverse of a matrix
+```python
+d=np.array([[1,2,3,4],[5,6,7,8]])
+x=np.linalg.inv(a)
+print(x)
+```
+### Diagonal of a matrix
+```python
+f=np.diag(d)
+print(f)
+```
+### Accessing two columns at a time
+```python
+a=np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+print(a)
+print(a[:,1:3])
+print(a[0:3,1:3])
+print(a[:,-1:]) #prints last column all the values 
+```
+### Boolean Indexing
+```python
+a=np.array([[1,2],[3,4],[5,6]])
+print(a)
+#print numbers which are more than 2 
+print(a>2)
+print(a[a>2])
+```
+### How to apply conditions in an Array
+```python
+np.where(condition,True,False)
+```
+```python
+c=np.where(a>2,a,-1)
+print(c)
+```
+### How to compute the indexes where the condition is true
+```python
+np.argwhere()
+```
+```python
+k=np.argwhere(a>2)
+print(k)
+```
+```python
+a=np.array([10,20,30,19,3,12,41,53,12,67,44,24])
+eve=np.argwhere(a%2==0).flatten() # flatten prints the output in single line
+print(eve)
+```
+---
+## Reshaping of an array
+```python
+# create a range of array upto 9
+a=np.arange(1,10)
+print(a)
+b=a.reshape(3,3)
+print(b)
+```
+## New Axis
+- is used to create a axis in the data
+```python
+d=a[np.newaxis,:]
+print(d)
+print(d.shape)
+print("-----------")
+e=a[:,np.newaxis]
+print(e)
+print(e.shape)
+```
+# COMMANDS
+```python
+np.array([])
+np.array([[]])
+np.shape
+np.dim
+np.size
+np.dtype
+np.dtype
+np.itemsize
+np.dot(array1,array2)
+np.sqrt()
+np.linalg.inv(array1)
+np.where(condition,true,false)
+np.argwhere(condition)
+np.arange(start,end)
+np.reshape(row,column)
+np.newaxis
+np.diag(array)
+Transpose(T)
+```
