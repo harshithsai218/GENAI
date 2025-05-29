@@ -302,3 +302,106 @@ np.newaxis
 np.diag(array)
 Transpose(T)
 ```
+---
+# 29-05-2025
+---
+ ### Copying of an Array
+ ```python
+np.copy # if you want to make any changes in the new array it wont impact on the old array
+```
+```python
+a=np.array([1,2,3,4])
+b=a.copy()
+b[0]=77
+print(a)
+print(b)
+```
+### Convertion of data type of an array
+```python
+# convert an array of int64 to int32 -> dtype=np.int32
+a=np.array([1,2,3,4],dtype='int32')
+print(a.dtype)
+a=np.array([1.5,1.4,2.3,1.2],dtype=np.int32)
+print(a)
+print(a.dtype)
+```
+### Generating Array's
+```python
+# generate an array of zeros with 2 rows and 3 columns
+a=np.zeros((2,3))
+print(a)
+a=np.zeros((3))
+print(a)
+```
+```python 
+# generating an array of specific nmber with particular rows and columns
+a=np.full((3,3),5)
+print(a)
+```
+### Identity Matrix
+```python 
+#generate an identity martix
+e=np.eye(3)
+print(e)
+f=np.identity(3)
+print(f)
+```
+```python 
+# generate a range of numbers upto 9
+i=np.arange(1,11)
+print(i)
+```
+### linspace
+```python
+#linspace : splits the data into n equal parts
+j=np.linspace(0,10,5)
+print(j)
+# np.linspace(start,end,no of partions)
+```
+### Generating Random Numbers
+```python
+### Generating Random Numbers those are uniformly distributed from 0-1
+a=np.random.random((3,2))
+print(a)
+```
+### Normally distribution or Gausian distribution
+```python
+# generate an array which is normally distributed or gausian distribution
+b=np.random.randn(3,2)
+print(b)
+```
+#### how to check it is normally distributed
+```python
+#generate an array of random numbers with 1000 and find the mean variance and standard deviation mean=~0 std=~1 var=~1
+c=np.random.randn(1000)
+print(c)
+print(c.mean(),c.std(),c.var())
+```
+```python 
+#generate an array of integers from 3,10 with 2 ros anf 3 columns
+a=np.random.randint(5,10,size=(2,3))
+print(a)
+```
+```python
+#generate an array of numbers up to 6 randomly with size of 10
+e = np.random.choice(7,size = 10)
+print(e)
+```
+# COMMANDS
+```python 
+#np.concatenate((arr1,arr1).axis=None,0,1)
+#hp.hstack((arr1,arr2))
+#np.vstack((arr1,arr2))
+#np.copy()
+#change dtype of int64 and flot64--> np.array(l,dtype=np.int32)
+#np.zeros((row,col))
+#np.ones((row,col))
+#np.full(row,col,number)
+#np.eye(N)
+#np.linspace(start,end,no.of partitions)
+#uniform data-->np.random.random((row,col))
+#normal distribution-->np.random.randn(row,col)
+#how can you say a data is randomly distributed--> mean is zero, varience is equal to 1 and std is equal to 1
+#random_numbers_with specific size--> np.random.choice(range of numbers,size=number)
+#genrate range of random integers--> np.random.randint(start,end, size=(row,col))
+```
