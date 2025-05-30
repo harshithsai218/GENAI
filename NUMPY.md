@@ -388,20 +388,20 @@ e = np.random.choice(7,size = 10)
 print(e)
 ```
 # COMMANDS
-```python 
-#np.concatenate((arr1,arr1).axis=None,0,1)
-#hp.hstack((arr1,arr2))
-#np.vstack((arr1,arr2))
-#np.copy()
-#change dtype of int64 and flot64--> np.array(l,dtype=np.int32)
-#np.zeros((row,col))
-#np.ones((row,col))
-#np.full(row,col,number)
-#np.eye(N)
-#np.linspace(start,end,no.of partitions)
-#uniform data-->np.random.random((row,col))
-#normal distribution-->np.random.randn(row,col)
-#how can you say a data is randomly distributed--> mean is zero, varience is equal to 1 and std is equal to 1
-#random_numbers_with specific size--> np.random.choice(range of numbers,size=number)
-#genrate range of random integers--> np.random.randint(start,end, size=(row,col))
+```python
+np.concatenate((arr1,arr1).axis=None,0,1)
+hp.hstack((arr1,arr2))
+np.vstack((arr1,arr2))
+np.copy()
+change dtype of int64 and flot64--> np.array(l,dtype=np.int32)
+np.zeros((row,col))
+np.ones((row,col))
+np.full(row,col,number)
+np.eye(N)
+np.linspace(start,end,no.of partitions)
+uniform data-->np.random.random((row,col))
+normal distribution-->np.random.randn(row,col)
+how can you say a data is randomly distributed--> mean is zero, varience is equal to 1 and std is equal to 1
+random_numbers_with specific size--> np.random.choice(range of numbers,size=number)
+genrate range of random integers--> np.random.randint(start,end, size=(row,col))
 ```
