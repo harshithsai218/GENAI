@@ -389,6 +389,25 @@ print(e)
 ```
 # COMMANDS
 ```python
+np.array([])
+np.array([[]])
+np.shape
+np.dim
+np.size
+np.dtype
+np.dtype
+np.itemsize
+np.dot(array1,array2)
+np.sqrt()
+np.linalg.inv(array1)
+np.where(condition,true,false)
+np.argwhere(condition)
+np.arange(start,end)
+np.reshape(row,column)
+np.newaxis
+np.diag(array)
+Transpose(T)
+###--------------------------------------------###
 np.concatenate((arr1,arr1).axis=None,0,1)
 hp.hstack((arr1,arr2))
 np.vstack((arr1,arr2))
