@@ -424,3 +424,28 @@ how can you say a data is randomly distributed--> mean is zero, varience is equa
 random_numbers_with specific size--> np.random.choice(range of numbers,size=number)
 genrate range of random integers--> np.random.randint(start,end, size=(row,col))
 ```
+---
+# 30-05-2025
+#### Solving the linear systems?
+```python
+#x1+x2=2200
+#1.5x1+4x2=5050
+import numpy as np
+a=np.array([[1,1],[1.5,4]])
+b=np.array([2200,5050])
+x= np.linalg.inv(a).dot(b)
+# instead we can use below formula 
+# np.linalg.solve(a,b)
+y=np.linalg.solve(a,b)
+print(x)
+print(y)
+```
+#### Broadcasting Methods
+- It is a powerful mechanism that allows numpy to work with different arrays of different shapes performing the arthmatic operations.
+```python
+a = np.array([[1,2,3],[4,5,6],[7,8,9],[10,11,12]])
+b = np.array([[1,0,1]])
+z=a+b
+print(a)
+print(z)
+```
