@@ -392,7 +392,7 @@ print(e)
 np.array([])
 np.array([[]])
 np.shape
-np.dim
+np.ndim
 np.size
 np.dtype
 np.dtype
