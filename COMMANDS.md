@@ -1,4 +1,5 @@
-# [PANDAS](https://colab.research.google.com/drive/1XJK0Tg1dKdSTExwQqmRKUPgn_K7kNa_P?usp=sharing)
+# [PANDAS]
+- [Sirs'Colab](https://colab.research.google.com/drive/1XJK0Tg1dKdSTExwQqmRKUPgn_K7kNa_P?usp=sharing)
 ```python
 # 02/06/2025
 pd.Series(name,index=['a','b'])
@@ -23,8 +24,8 @@ df.duplicated().sum() # find the duplicate in df
 df.drop_duplicates(inplace=True) # drop the duplicate data
 ```
 ---
-# [NUMPY](https://colab.research.google.com/drive/1fmTykli84INv8HPrW1_ufkU77dQI9cpo?usp=sharing)
-- COLAB SIR LINK
+# [NUMPY]
+- [Sirs_Colab](https://colab.research.google.com/drive/1fmTykli84INv8HPrW1_ufkU77dQI9cpo?usp=sharing)
 ```python
 np.array([])
 np.array([[]])
