@@ -7,7 +7,7 @@
 - time series analysis 
 ## WHAT IS FUNCTION OF PANDAS
 - Analyzing the data, cleaning, exploring, and manupulation the data
-## WHAT IS DATA CLEANING?/
+## WHAT IS DATA CLEANING?
 - Deleting irrelevent data, empty or null values, correction of data types, fill the null values
 ---
 ## Installation of Pandas
@@ -323,4 +323,199 @@ df['col_name'].unique() # find the unique values
 df['col_name'].value_counts() # get the frequency of data points in specific column. 
 df.duplicated().sum() # find the duplicate in df
 df.drop_duplicates(inplace=True) # drop the duplicate data
+```
+---
+# 04-06-2025
+#### How to handle the missing data
+```python
+s=pd.Series(['sam',np.nan,'Tim'])
+print(s)
+s.isnull()
+s.notnull()
+```
+#### how to drop null value
+```python
+s.dropna()
+```
+#### using Data Frames
+```python
+from numpy import nan as na
+df = pd.DataFrame([[1,2,3],[4,na,6],[na,na,na]])
+print(df)
+```
+#### delete only the which is have all the null values
+```python
+df.dropna(how='all')
+```
+#### Thresh (Threshold)
+- Thresh is nothing but threshold limit for the null values. for ex:- if tresh is 2 it removes the null values less or equal to 2
+```python
+df.dropna(thresh=1,axis=1,inplace=True)
+df
+```
+#### How to fill the null values with zero
+```python
+df = pd.DataFrame([[1,2,3],[4,na,5],[na,na,na]])
+print(df) 
+df.fillna(0)
+```
+```python
+#iloc method
+df.iloc[2,0]=10
+df.iloc[2,1]=20
+df.iloc[2,2]=30
+df
+```
+```python
+#fillna method
+df.fillna({0:15,1:25,2:35})
+```
+## **ffill** method
+- the use **"ffill"** to fill nan values in above df
+- ffill fills the last value bfore nan values in the column is gooin to fill in NAN place
+```python 
+df.fillna(method = "ffill")
+df.fillna(method = "ffill",limit=1)
+```
+### filling the data with mean values
+```python
+df.fillna(df.mean())
+```
+
+## Assessment
+```python
+df = pd.DataFrame([[1,2,3,4],[5,na,6,na],[7,8,na,na],[na,9,na,10],[11,na,na,12]])
+print(df)
+# fill the null values with zero
+df.fillna(0)
+# fill the null values with ffill method
+df.fillna(method="ffill")
+# fill the null values with mean
+df.fillna(df.mean())
+```
+---
+# COMMANDS
+```python
+df.isnull().sum()
+df.dropna(how='all',axis=1 or 0,tresh=2,inplace=True)
+df.fillna(value,method,limit)
+```
+---
+# Combining and Merging of DataFrames
+```python
+d1 = pd.DataFrame(
+    {"key":['a','b','c','c','d','e'],
+     "num1":range(6)}
+)
+d2 = pd.DataFrame(
+    {"key":['b','c','e','f'],
+     "num2":range(4)
+     }
+)
+print(d1)
+print(d2)
+# gets the data of matched data only else it is removed
+pd.merge(d1,d2)
+```
+```
+print(d1)
+  key  num1
+0   a     0
+1   b     1
+2   c     2
+3   c     3
+4   d     4
+5   e     5
+print(d2)
+ key  num2
+0   b     0
+1   c     1
+2   e     2
+3   f     3
+merged
+key	num1	num2
+0	b	1	0
+1	c	2	1
+2	c	3	1
+3	e	5	2
+
+```
+#### left and right join
+```python
+pd.merge(d1,d2,how='left' )
+pd.merge(d1,d2,how='right' )
+```
+```
+left join
+	key	num1	num2
+0	a	0	NaN
+1	b	1	0.0
+2	c	2	1.0
+3	c	3	1.0
+4	d	4	NaN
+5	e	5	2.0
+
+right join
+key	num1	num2
+0	b	1.0	0
+1	c	2.0	1
+2	c	3.0	1
+3	e	5.0	2
+4	f	NaN	3
+```
+#### merge the dataframe based on common columns
+```python
+pd.merge(d1,d2,on='key')
+```
+```
+	key	num1	num2
+0	b	1	0
+1	c	2	1
+2	c	3	1
+3	e	5	2
+```
+#### merge the data from both d1,d2
+```python
+pd.merge(d1,d2,how='outer')
+```
+```
+key	num1	num2
+0	a	0.0	NaN
+1	b	1.0	0.0
+2	c	2.0	1.0
+3	c	3.0	1.0
+4	d	4.0	NaN
+5	e	5.0	2.0
+6	f	NaN	3.0
+```
+#### spliting the data
+```python
+pieces = [df[:2],df[2:5],df[5:7]]
+pieces
+```
+```
+[  key  num1  num2
+ 0   a   0.0   NaN
+ 1   b   1.0   0.0,
+   key  num1  num2
+ 2   c   2.0   1.0
+ 3   c   3.0   1.0
+ 4   d   4.0   NaN,
+   key  num1  num2
+ 5   e   5.0   2.0
+ 6   f   NaN   3.0]
+```
+#### combining the data
+```python
+pd.concat(pieces)
+```
+```
+	key	num1	num2
+0	a	0.0	NaN
+1	b	1.0	0.0
+2	c	2.0	1.0
+3	c	3.0	1.0
+4	d	4.0	NaN
+5	e	5.0	2.0
+6	f	NaN	3.0
 ```

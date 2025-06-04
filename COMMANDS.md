@@ -1,4 +1,4 @@
-# [PANDAS]
+# PANDAS
 - [Sirs'Colab](https://colab.research.google.com/drive/1XJK0Tg1dKdSTExwQqmRKUPgn_K7kNa_P?usp=sharing)
 ```python
 # 02/06/2025
@@ -22,9 +22,13 @@ df['col_name'].unique() # find the unique values
 df['col_name'].value_counts() # get the frequency of data points in specific column. 
 df.duplicated().sum() # find the duplicate in df
 df.drop_duplicates(inplace=True) # drop the duplicate data
+#04/06/2025
+df.isnull().sum() # find the sum of all the null values in the data frame
+df.dropna(how='all',axis=1 or 0,tresh=2,inplace=True) # to drop the null value , how - limits the when all the row values are null thresh -Thresh is nothing but threshold limit for the null values. for ex:- if tresh is 2 it removes the null values less or equal to 2 and inplace true will make the changes in the data frame
+df.fillna(value,method,limit) # filling the null values with specific values
 ```
 ---
-# [NUMPY]
+# NUMPY
 - [Sirs_Colab](https://colab.research.google.com/drive/1fmTykli84INv8HPrW1_ufkU77dQI9cpo?usp=sharing)
 ```python
 np.array([])
