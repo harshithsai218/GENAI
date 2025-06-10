@@ -519,3 +519,74 @@ pd.concat(pieces)
 5	e	5.0	2.0
 6	f	NaN	3.0
 ```
+---
+# 05/06/2025
+## Pivoting
+#### What is pivot table in pandas
+- it is a tool to summarize and analyze the data
+- **SYNTAX**
+```python
+pd.pivot_table(data,values,index,columns,aggfunc)
+```
+```python 
+ # pivoting
+data = {
+  'student' : ['a','b','c','a','b','c'] ,
+  'subjects' : ['maths','maths','maths','science','science','science'],
+  'scores' : [85,90,95,80,70,88] ,
+  'sem' : ['sem1','sem1','sem1','sem2','sem2','sem2']
+}
+
+df=pd.DataFrame(data)
+df
+pd.pivot_table(df,values='marks',index='student',columns='subjects',aggfunc='mean')
+```
+```
+subjects  maths  science
+student                 
+a          85.0     80.0
+b          90.0     70.0
+c          95.0     88.0
+```
+##### how add the data into data frames
+```python
+a={
+    'student' : ['q'] ,
+  'subjects' : ['ssc'],
+  'marks' : [85] 
+}
+x=pd.concat([df,pd.DataFrame(a)],ignore_index=True)
+x
+```
+```
+  student subjects  marks   sem
+0       a    maths     85  sem1
+1       b    maths     90  sem1
+2       c    maths     95  sem1
+3       a  science     80  sem2
+4       b  science     70  sem2
+5       c  science     88  sem2
+6       q      ssc     85   NaN
+```
+---
+##### how to fill the null values in the pivot table
+- **SYNTAX**
+```
+pd.pivot_table(data,values,index,columns,aggfunc,fill_value)
+```
+```python
+pd.pivot_table(x,values='marks',index='student',columns='subjects',aggfunc='mean',fill_value=df['marks'].mean())
+```
+---
+# Groupby Functions
+- this applicable with aggregate functions
+1. min
+2. max
+3. sum
+4. avg
+5. count
+6. etc
+```python
+# print the minimum marks of the student 
+df.groupby('student')['marks'].min()
+```
