@@ -195,3 +195,62 @@ ROLLBACK;
 SELECT * FROM STUDENTS;
 ROLLBACK;
 -- DOUBT
+-- #################################################################13/06/2025######################################################################
+create table products(
+product_id integer primary key,
+product_type_id integer references product_types(product_type_id),
+name varchar(30) not null,
+description varchar(50),
+price decimal(5,2)
+);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (1, 1, 'Modern Science', 'A description of modern
+science', 19.95);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (2, 1, 'Chemistry', 'Introduction to Chemistry', 30.00);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (3, 2, 'Supernova', 'A star explodes', 25.99);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (4, 2, 'Tank War', 'Action movie about a future war',
+13.95);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (5, 2, 'Z Files', 'Series on mysterious activities',
+49.99);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (6, 2, '2412: The Return', 'Aliens return', 14.95);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (7, 3, 'Space Force 9', 'Adventures of heroes', 13.49);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (8, 3, 'From Another Planet', 'Alien from another planet
+lands on Earth', 12.99);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (9, 4, 'Classical Music', 'The best classical music',
+10.99);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (10, 4, 'Pop 3', 'The best popular music', 15.99);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (11, 4, 'Creative Yell', 'Debut album', 14.99);
+INSERT INTO products ( product_id, product_type_id, name, description,
+price) VALUES (12, NULL, 'My Front Line', 'Their greatest hits',
+13.49);
+USE GENAI;
+-- AGGREGATES FUNCTIONS ( MIN ,MAX ,COUNT ,SUM , AVG)
+-- CHECK THE DATA IN PRODUCTS
+SELECT * FROM PRODUCTS;
+-- GET THE MINIMUM PRICE FROM PRODUCTS TABLE
+SELECT MIN(PRICE) AS MINIMUM_VALUE FROM PRODUCTS;
+-- GET THE RECORDS OF PRODUCT TYPE ID MINIMUM PRICES
+SELECT PRODUCT_TYPE_ID , MIN(PRICE) FROM PRODUCTS GROUP BY PRODUCT_TYPE_ID;
+-- WE NEED TO USE GROUPBY FUNCTION WHEN WE ARE USING AGGREGATE FUNCTION 
+-- GET THE RECORDS OF PRODUCT TYPE ID MINIMUM PRICES WITHOUT NULL VALUES
+SELECT PRODUCT_TYPE_ID , MIN(PRICE) FROM PRODUCTS WHERE PRODUCT_TYPE_ID IS NOT NULL GROUP BY PRODUCT_TYPE_ID ;
+-- GET THE MINIMUM PRICE OF PRODUCT IDS WHERE THE MINIMUM PRICE IS MORE THAN 12
+SELECT PRODUCT_TYPE_ID , MIN(PRICE) FROM PRODUCTS WHERE PRODUCT_TYPE_ID IS NOT NULL GROUP BY PRODUCT_TYPE_ID HAVING MIN(PRICE) > 12 ;
+-- GET THE ABOVE QUERY IN THE ASCENDING ORDER 
+SELECT PRODUCT_TYPE_ID , MIN(PRICE) FROM PRODUCTS WHERE PRODUCT_TYPE_ID IS NOT NULL GROUP BY PRODUCT_TYPE_ID HAVING MIN(PRICE) > 12 ORDER BY MIN(PRICE) ASC LIMIT 1;
+-- EXECUTION OF AGGREGATE FUNCTION --> SELECT AGGRE() FROM WHERE GROUPBY HAVING ORDERBY LIMIT
+-- GET THE AVG PRICE OF A PRODUCT ALONG WITH THE PRODUCT TYPE ID HAVING AVG PRICE MORE THAN 20  AND PRINT THE PRODUCT TYPE ID EITH THE HIGHEST AVG PRICE
+-- GET THE RECORD OF HIGHESET AVG PRICE IF A PRODUCT TYPE ID FROM PRODUCT TABLE
+SELECT PRODUCT_TYPE_ID , AVG(PRICE) FROM PRODUCTS WHERE PRODUCT_TYPE_ID IS NOT NULL GROUP BY PRODUCT_TYPE_ID HAVING AVG(PRICE)>10 ORDER BY AVG(PRICE)DESC LIMIT 1;
+--  GET THE RECORD OF MAXPRICE IF A PRODUCT TYPE ID FROM PRODUCT TABLE
+SELECT PRODUCT_TYPE_ID , MAX(PRICE) FROM PRODUCTS WHERE PRODUCT_TYPE_ID IS NOT NULL GROUP BY PRODUCT_TYPE_ID HAVING MAX(PRICE) ORDER BY MAX(PRICE) DESC ;
