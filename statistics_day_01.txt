@@ -1,0 +1,127 @@
+Day01stats
+
+
+statistics:- is a branch of mathematics where we can,collect,organize, visualise , analyse  the data for
+better decision making and future predictions
+
+There 2 types of stats
+
+1.Descriptive stats:- gives the summary of data
+
+2.inferential stats:- is a process of data analysis where we can make the conclusion report about your
+data
+
+
+#what is a population?
+
+#population is a overall data that you want draw conclusion
+
+#what is sample?
+
+#sample is a part of population
+
+#what is data?
+
+#data is facts or piece of information that can be measured 
+
+
+Types of sampling techniques:-
+
+1.simple random sampling:-  is process of sampling where every member has equal chance to get
+selected 
+
+
+
+
+
+2.stratified sampling:- is process where population splits in to non overlapping groups.
+
+
+
+
+
+
+
+
+
+
+3.systametic sampling:-  is a probability sampling methods  where researchers select population  of nth
+intervel
+
+
+
+
+
+
+
+4. convinence sampling:- is the process of taking the sample data from those who has knowledge on the
+reasearch data
+
+
+
+#Variable:- are containers where we can store the data and reuse it 
+
+
+the variable are 2 types according to stats
+
+
+Quantitative variable:-  numerical data--> 2types --
+
+a. continuous data:-   a numeric value that has infinite number of values 
+
+ex:- weight of students in a class room
+
+       height of students in a class room
+
+
+b. discrete data:-  a fixed whole number
+
+ex:-  no of childrens in a family ---> 2,3,4,
+
+        Total population in a city
+
+
+No of students in a class--> discrete data
+
+House rent prices in a area---> continous
+
+No of houses in a area-->discrete
+
+count of sugar--->cont
+
+
+
+
+Qualitative variable:- is categorical data based on some characterstics we derive some values 
+
+        ex:- dog breeds, eye color, gender,level of education,marital status
+
+
+
+#what are all variable measurment sclaes do we have?
+
+#there are 4 types
+
+#1.Nominal data:- categorical data and no order
+
+#2.ordinal data:- order matters
+
+#3.intervel:-    order matters also values also matter
+
+#4.ratio:- 1:2.3:2
+
+
+
+
+
+revision:
+
+
+np.where(condition,true,fals)
+
+q)compute the indices of an array where the condition is true-->np.argwhere(condition)
+
+pandas fillna-->
+
+df[‘col’].fillna(methods=’ffil’,how,any)
+
