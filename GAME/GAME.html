@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forest of Fate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Epilogue', 'Noto Sans', sans-serif;
+    }
+    .tile {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #2d3e2d;
+      display: inline-block;
+    }
+    .player {
+      background-color: #4ade80;
+    }
+  </style>
+</head>
+<body class="bg-[#151e15] text-white">
+  <header class="flex items-center justify-between px-10 py-3 border-b border-[#2d3e2d]">
+    <h2 class="text-lg font-bold">Forest of Fate</h2>
+    <div class="flex gap-4">
+      <div id="coinDisplay">💰 Coins: 0</div>
+      <div id="healthDisplay">❤️ Health: 100</div>
+    </div>
+  </header>
+  <main class="flex flex-col items-center py-6">
+    <p class="text-center max-w-xl mb-4">Explore the enchanted forest, avoid hidden dangers, and uncover the path to victory. Reach 100 coins to win!</p>
+    <div id="grid" class="grid grid-cols-6 gap-1 mb-4"></div>
+    <div class="flex gap-4">
+      <button class="px-4 py-2 bg-[#2d3e2d] rounded" onclick="movePlayer('up')">⬆️ Up</button>
+      <button class="px-4 py-2 bg-[#2d3e2d] rounded" onclick="movePlayer('left')">⬅️ Left</button>
+      <button class="px-4 py-2 bg-[#2d3e2d] rounded" onclick="movePlayer('down')">⬇️ Down</button>
+      <button class="px-4 py-2 bg-[#2d3e2d] rounded" onclick="movePlayer('right')">➡️ Right</button>
+    </div>
+    <div id="message" class="mt-4 text-center"></div>
+  </main>
+
+  <script>
+    const GRID_SIZE = 6;
+    const grid = document.getElementById('grid');
+    let playerPos = [Math.floor(Math.random() * GRID_SIZE), Math.floor(Math.random() * GRID_SIZE)];
+    const origin = [...playerPos];
+    let coins = 0;
+    let health = 100;
+
+    function drawGrid() {
+      grid.innerHTML = '';
+      for (let y = 0; y < GRID_SIZE; y++) {
+        for (let x = 0; x < GRID_SIZE; x++) {
+          const tile = document.createElement('div');
+          tile.classList.add('tile');
+          if (playerPos[0] === x && playerPos[1] === y) {
+            tile.classList.add('player');
+          }
+          grid.appendChild(tile);
+        }
+      }
+    }
+
+    function randomEvent() {
+      if (playerPos[0] === origin[0] && playerPos[1] === origin[1]) return;
+
+      const events = ["nothing", "treasure", "bandit", "trap", "teleport", "heal"];
+      const weights = [30, 20, 17, 14, 10, 9];
+      const totalWeight = weights.reduce((a, b) => a + b);
+      const rnd = Math.random() * totalWeight;
+      let sum = 0;
+      let event = "nothing";
+      for (let i = 0; i < events.length; i++) {
+        sum += weights[i];
+        if (rnd <= sum) {
+          event = events[i];
+          break;
+        }
+      }
+
+      let msg = "";
+      if (event === "treasure") {
+        const gain = Math.floor(Math.random() * 21) + 10;
+        coins = Math.min(100, coins + gain);
+        msg = `💰 Found treasure! +${gain} coins`;
+      } else if (event === "bandit") {
+        const loss = Math.floor(Math.random() * 16) + 5;
+        if (coins >= loss) {
+          coins -= loss;
+          msg = `🦹 Bandit stole ${loss} coins!`;
+        } else {
+          health = Math.max(0, health - (loss - coins));
+          msg = `🦹 Bandit stole ${coins} coins and hurt you! -${loss - coins} health`;
+          coins = 0;
+        }
+      } else if (event === "trap") {
+        const damage = Math.floor(Math.random() * 21) + 10;
+        health = Math.max(0, health - damage);
+        msg = `💥 Trap triggered! -${damage} health`;
+      } else if (event === "teleport") {
+        playerPos = [Math.floor(Math.random() * GRID_SIZE), Math.floor(Math.random() * GRID_SIZE)];
+        msg = "🌀 Teleport trap! Moved to a random tile.";
+      } else if (event === "heal") {
+        const heal = Math.floor(Math.random() * 11) + 5;
+        health = Math.min(100, health + heal);
+        msg = `🌿 Found herbs! +${heal} health`;
+      } else {
+        msg = "🌲 Nothing here...";
+      }
+
+      updateUI(msg);
+    }
+
+    function updateUI(message) {
+      document.getElementById("coinDisplay").textContent = `💰 Coins: ${coins}`;
+      document.getElementById("healthDisplay").textContent = `❤️ Health: ${health}`;
+      document.getElementById("message").textContent = message;
+      drawGrid();
+
+      if (health <= 0) {
+        alert("☠️ You died in the forest. Game Over.");
+        location.reload();
+      } else if (coins >= 100) {
+        alert("🏆 You collected enough coins and escaped the forest!");
+        location.reload();
+      }
+    }
+
+    function movePlayer(direction) {
+      const [x, y] = playerPos;
+      let newX = x, newY = y;
+      if (direction === "up") newY -= 1;
+      else if (direction === "down") newY += 1;
+      else if (direction === "left") newX -= 1;
+      else if (direction === "right") newX += 1;
+
+      if (newX >= 0 && newX < GRID_SIZE && newY >= 0 && newY < GRID_SIZE) {
+        playerPos = [newX, newY];
+        randomEvent();
+      } else {
+        updateUI("🚫 You can't move outside the forest!");
+      }
+    }
+
+    drawGrid();
+  </script>
+</body>
+</html>
