@@ -1,3 +1,5 @@
+# [PYTHON FIRST CLASS](https://colab.research.google.com/drive/1QDQZQEwXNC9AFFQlpIqZwBh59WuU8dzu?usp=sharing)
+
 # PANDAS
 - [Sirs'Colab](https://colab.research.google.com/drive/1XJK0Tg1dKdSTExwQqmRKUPgn_K7kNa_P?usp=sharing)
 ```python
@@ -61,7 +63,7 @@ np.full(row,col,number)
 np.eye(N)
 np.linspace(start,end,no.of partitions)
 np.random.random((row,col)) # uniform data
-np.random.randn(row,col) # normal distribution
+np.random.randn(row,col) # normal distribution or gaussian distribution
 mean is zero, varience is equal to 1 and std is equal to 1 # how can you say a data is randomly distributed
 np.random.choice(range of numbers,size=number) # random_numbers_with specific size
 np.random.randint(start,end, size=(row,col)) # genrate range of random integers--> 
