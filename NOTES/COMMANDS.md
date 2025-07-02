@@ -68,3 +68,10 @@ mean is zero, varience is equal to 1 and std is equal to 1 # how can you say a d
 np.random.choice(range of numbers,size=number) # random_numbers_with specific size
 np.random.randint(start,end, size=(row,col)) # genrate range of random integers--> 
 ```
+
+
+# MATPLOTLIB
+
+```python
+plt.plot(x,y,'special symbol<>formatingline<>color code',ms,mec,mfc) # marker - o,x,p,P,#,+,s,D,d,h,H,v
+```
