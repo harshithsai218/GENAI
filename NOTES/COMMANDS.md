@@ -71,7 +71,7 @@ np.random.randint(start,end, size=(row,col)) # genrate range of random integers-
 
 
 # MATPLOTLIB
-
+- [Sirs_Colab](https://colab.research.google.com/drive/1m7yy3Z2SOVU2eHZLojxtZfGMl-VeWMrG?usp=sharing#scrollTo=JPn1x_bJfIrt)
 ```python
 plt.plot(x,y,'special symbol<>formatingline<>color code',ms,mec,mfc) # marker - o,x,p,P,#,+,s,D,d,h,H,v
 ```
