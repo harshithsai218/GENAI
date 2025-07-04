@@ -362,3 +362,52 @@ sns.violinplot(data=data,x='sex',y='total_bill',hue='day')
 ```python
 sns.boxplot(data=data,x='sex',y='total_bill',hue='day')
 ```
+---
+# 04/07/2025
+# HEATMAPS
+### WHAT IS A HEATMAP?
+- IT IS A DATA VISUALIZATION TECHNIQUE THAT SHOWS THE MAGNITUDE PHENOMENON
+
+### HOW TO DRAW A HEATMAP?
+```python
+data = np.random.randn(5,5)
+sns.heatmap(data,annot=True,cmap='gnuplot') # YlGnBu
+plt.title("basic heatmap with random numbers")
+```
+
+### USING DATASET
+```python
+df = pd.DataFrame({
+    'maths':[88,92,79,93],
+    'science':[84,94,75,90],
+    'english':[90,85,80,88]
+},index=['Andrews','Charlie','David','Sam'])
+print(df)
+sns.heatmap(df,annot=True,cmap='coolwarm')
+plt.title('Student course heatmap')
+plt.figure(figsize=(5,5))
+plt.show()
+```
+
+### LOADING THE DATASET FROM SEABORN FOR IRIS DATASET AND CREATING A CORRELATION AND PLOTTING A HEATMAP
+```python
+df2=sns.load_dataset('iris')
+df2.columns
+corr = df2.corr(numeric_only=True)
+corr
+sns.heatmap(corr,annot=True,cmap='RdBu',center=0)
+plt.title('correlation heatmap')
+plt.figure(figsize=(5,3))
+plt.show()
+```
+
+### CREATE A HEATMAP SHOWING AVERAGE TIP AMOUNT BY DAY AND TIME USING TIPS DATASET
+```python
+df=sns.load_dataset('tips')
+pivot = df.pivot_table(values='tip', index='day',columns='time',aggfunc='mean')
+pivot
+sns.heatmap(pivot,annot=True,cmap='YlOrBr')
+plt.title('Avg tip by day and time')
+plt.show()
+```
+
