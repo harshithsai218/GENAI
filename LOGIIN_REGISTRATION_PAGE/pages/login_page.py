@@ -87,7 +87,7 @@ def login_page():
             submit(email,password)
     
     if st.button("New user? Register here"):
-        st.switch_page('registration_page')
+        st.switch_page("Registration Page")
 
 
 login_page()
