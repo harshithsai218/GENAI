@@ -99,7 +99,7 @@ def check_pass_strength(password):
     return errors  
 
 def registration_page():
-    st.set_page_config(page_title="registration page")
+    st.set_page_config(page_title="REGISTRATION PAGE")
     st.title("REGISTRATION PAGE")
     with st.form("registration form",clear_on_submit=True):
         first_name = st.text_input("FIRST NAME")

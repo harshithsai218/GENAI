@@ -77,7 +77,7 @@ def submit(email, password):
         st.error("Username not found.")
 
 def login_page():
-    st.set_page_config(page_title="Login Page")
+    st.set_page_config(page_title="LOGIN PAGE")
     st.title("LOGIN PAGE")
     with st.form("login_form",clear_on_submit=True):
         email = st.text_input("EMAIL")
