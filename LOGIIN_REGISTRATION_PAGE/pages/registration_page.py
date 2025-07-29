@@ -113,7 +113,7 @@ def registration_page():
             submit(first_name, last_name, email, mobile_number, password, c_password)
             
     if st.button("Already registered? Go to Login "):
-        st.switch_page("login_page")
+        st.switch_page("pages/login_page.py")
 
 registration_page()
 
